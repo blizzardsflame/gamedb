@@ -1,10 +1,11 @@
 //Components
 import Home from "./pages/home";
+import GlobalStyles from "./components/GlobalStyles";
 
 function App() {
   return (
     <div className="App">
-      <h1>Reignite</h1>
+      <GlobalStyles />
       <Home />
     </div>
   );
