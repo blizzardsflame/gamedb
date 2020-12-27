@@ -2,6 +2,7 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import logo from "../img/logo.svg";
+import { fadeIn } from "../Animations";
 //Redux
 import { fetchSearch } from "../actions/gameActions";
 import { useDispatch } from "react-redux";
@@ -28,7 +29,7 @@ const Nav = () => {
   };
 
   return (
-    <StyledNav>
+    <StyledNav variants={fadeIn} initial="hidden" animate="show">
       <Logo onClick={clearSearch}>
         <img src={logo} alt="logo" />
         <h1>Reignite</h1>
