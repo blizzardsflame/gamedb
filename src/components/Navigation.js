@@ -2,19 +2,44 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import logo from "../img/logo.svg";
+//Redux
+import { fetchSearch } from "../actions/gameActions";
+import { useDispatch } from "react-redux";
+//React
+import React, { useState } from "react";
 
 const Nav = () => {
+  const dispatch = useDispatch();
+  const [textInput, setTextInput] = useState("");
+
+  const inputHandler = (e) => {
+    setTextInput(e.target.value);
+  };
+  const submitSearch = (e) => {
+    e.preventDefault();
+    if (textInput.length > 0) {
+      dispatch(fetchSearch(textInput));
+      setTextInput("");
+    }
+  };
+
+  const clearSearch = () => {
+    dispatch({ type: "CLEAR_SEARCH" });
+  };
+
   return (
     <StyledNav>
-      <Logo>
+      <Logo onClick={clearSearch}>
         <img src={logo} alt="logo" />
         <h1>Reignite</h1>
         <img src={logo} alt="logo" />
       </Logo>
-      <div className="search">
-        <input type="text" />
-        <button>Search</button>
-      </div>
+      <form className="search">
+        <input value={textInput} onChange={inputHandler} type="text" />
+        <button type="submit" onClick={submitSearch}>
+          Search
+        </button>
+      </form>
     </StyledNav>
   );
 };
@@ -39,6 +64,7 @@ const StyledNav = styled(motion.nav)`
     cursor: pointer;
     background: #ff7676;
     color: white;
+    outline-color: #ff7676;
   }
 `;
 const Logo = styled(motion.nav)`
@@ -46,10 +72,10 @@ const Logo = styled(motion.nav)`
   justify-content: center;
   padding: 1rem;
   cursor: pointer;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   img {
-    width: 2rem;
-    height: 2rem;
+    width: 1.8rem;
+    height: 1.8rem;
   }
 `;
 export default Nav;
