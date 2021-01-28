@@ -6,9 +6,11 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { resizeImage } from "../Utils/Util";
 //Images
-import playstation from "../img/playstation.svg";
+import playstation from "../img/PS4.svg";
+import playstation5 from "../img/PS5.svg";
 import steam from "../img/steam.svg";
 import xbox from "../img/xbox.svg";
+import xboxsx from "../img/XBOX SX.svg";
 import nintendo from "../img/nintendo.svg";
 import apple from "../img/apple.svg";
 import gamepad from "../img/gamepad.svg";
@@ -45,8 +47,12 @@ const GameDetail = ({ pathID }) => {
     switch (platform) {
       case "PlayStation 4":
         return playstation;
+      case "PlayStation 5":
+        return playstation5;
       case "Xbox One":
         return xbox;
+      case "Xbox Series S/X":
+        return xboxsx;
       case "PC":
         return steam;
       case "Nintendo Switch":
@@ -168,6 +174,8 @@ const Platforms = styled(motion.div)`
   justify-content: space-evenly;
   img {
     margin-left: 3rem;
+    width: 45px;
+    height: 40px;
   }
 `;
 

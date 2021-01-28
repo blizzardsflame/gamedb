@@ -1,7 +1,8 @@
 //Styling && animation
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import logo from "../img/logo.svg";
+import logo from "../img/logo_flame.svg";
+import searchimg from "../img/searchbtn.svg";
 import { fadeIn } from "../Animations";
 //Redux
 import { fetchSearch } from "../actions/gameActions";
@@ -36,47 +37,63 @@ const Nav = () => {
         <img src={logo} alt="logo" />
       </Logo>
       <form className="search">
-        <input value={textInput} onChange={inputHandler} type="text" />
-        <button type="submit" onClick={submitSearch}>
-          Search
-        </button>
+        <SearchBar>
+          <input
+            value={textInput}
+            onChange={inputHandler}
+            type="text"
+            placeholder="Search..."
+          />
+          <button type="submit" onClick={submitSearch}>
+            <img src={searchimg} alt="search" />
+          </button>
+        </SearchBar>
       </form>
     </StyledNav>
   );
 };
 
-const StyledNav = styled(motion.nav)`
+const StyledNav = styled(motion.div)`
   padding: 3rem 5rem;
   text-align: center;
+`;
+const SearchBar = styled(motion.div)`
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
   input {
     width: 35%;
     padding: 0.5rem;
     font-size: 1.5rem;
     border: none;
     border-radius: 0.3rem;
-    margin-top: 1rem;
     box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2);
     outline-color: #ff7676;
   }
   button {
-    font-size: 1.5rem;
     border: none;
-    padding: 0.5rem 2rem;
+    border-radius: 0.3rem;
+    padding: 0.5rem 1rem;
     cursor: pointer;
     background: #ff7676;
-    color: white;
     outline-color: #ff7676;
+    margin-left: 0.12rem;
+  }
+  img {
+    width: 36px;
+    height: 36px;
   }
 `;
-const Logo = styled(motion.nav)`
+const Logo = styled(motion.div)`
   display: flex;
   justify-content: center;
   padding: 1rem;
   cursor: pointer;
-  font-size: 1.3rem;
+  font-size: 1rem;
   img {
-    width: 1.8rem;
-    height: 1.8rem;
+    width: 2rem;
+    height: 2rem;
   }
 `;
+
 export default Nav;
