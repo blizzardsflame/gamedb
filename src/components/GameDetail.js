@@ -1,31 +1,35 @@
 //Styling && animation
-import styled from "styled-components";
-import { motion } from "framer-motion";
+import styled from 'styled-components';
+import { motion } from 'framer-motion';
 //Redux
-import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { resizeImage } from "../Utils/Util";
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { resizeImage } from '../Utils/Util';
 //Images
-import playstation from "../img/PS4.svg";
-import playstation5 from "../img/PS5.svg";
-import steam from "../img/steam.svg";
-import xbox from "../img/xbox.svg";
-import xboxsx from "../img/XBOX SX.svg";
-import nintendo from "../img/nintendo.svg";
-import apple from "../img/apple.svg";
-import gamepad from "../img/gamepad.svg";
+import ps3 from '../img/ps3.png';
+import playstation from '../img/PS4.svg';
+import playstation5 from '../img/PS5.svg';
+import steam from '../img/steam.svg';
+import xbox from '../img/xbox.svg';
+import xboxsx from '../img/XBOX SX.svg';
+import nintendo from '../img/nintendo.svg';
+import apple from '../img/apple.svg';
+import gamepad from '../img/gamepad.svg';
+import linux from '../img/linux.png';
+import mac from '../img/mac.png';
+
 //Star
-import starEmpty from "../img/star-empty.png";
-import starFull from "../img/star-full.png";
+import starEmpty from '../img/star-empty.png';
+import starFull from '../img/star-full.png';
 
 const GameDetail = ({ pathID }) => {
   const history = useHistory();
   //Exit Detail
   const exitDetailHanlder = (e) => {
     const element = e.target;
-    if (element.classList.contains("shadow")) {
-      document.body.style.overflow = "auto";
-      history.push("/");
+    if (element.classList.contains('shadow')) {
+      document.body.style.overflow = 'auto';
+      history.push('/');
     }
   };
   //Star
@@ -45,20 +49,26 @@ const GameDetail = ({ pathID }) => {
   //Platform images
   const getPlatform = (platform) => {
     switch (platform) {
-      case "PlayStation 4":
+      case 'PlayStation 3':
+        return ps3;
+      case 'PlayStation 4':
         return playstation;
-      case "PlayStation 5":
+      case 'PlayStation 5':
         return playstation5;
-      case "Xbox One":
+      case 'Xbox One':
         return xbox;
-      case "Xbox Series S/X":
+      case 'Xbox Series S/X':
         return xboxsx;
-      case "PC":
+      case 'PC':
         return steam;
-      case "Nintendo Switch":
+      case 'Nintendo Switch':
         return nintendo;
-      case "IOS":
+      case 'IOS':
         return apple;
+      case 'macOS':
+        return mac;
+      case 'Linux':
+        return linux;
       default:
         return gamepad;
     }
